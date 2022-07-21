@@ -1,0 +1,299 @@
+{
+  "app_key": "application.generated.unity.iwillneversurrender.exe",
+  "bindings": {
+    "/actions/buggy": {
+      "chords": [],
+      "poses": [],
+      "haptics": [],
+      "sources": [],
+      "skeleton": []
+    },
+    "/actions/default": {
+      "chords": [],
+      "poses": [],
+      "haptics": [],
+      "sources": [],
+      "skeleton": []
+    },
+    "/actions/default_killhouse": {
+      "chords": [],
+      "poses": [
+        {
+          "output": "/actions/default_killhouse/in/pose",
+          "path": "/user/hand/left/pose/gdc2015"
+        },
+        {
+          "output": "/actions/default_killhouse/in/pose",
+          "path": "/user/hand/right/pose/gdc2015"
+        }
+      ],
+      "haptics": [
+        {
+          "output": "/actions/default_killhouse/out/haptic",
+          "path": "/user/hand/left/output/haptic"
+        },
+        {
+          "output": "/actions/default_killhouse/out/haptic",
+          "path": "/user/hand/right/output/haptic"
+        }
+      ],
+      "sources": [
+        {
+          "path": "/user/hand/left/input/trigger",
+          "mode": "trigger",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/trigger_button"
+            },
+            "pull": {
+              "output": "/actions/default_killhouse/in/trigger_axis"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/trigger_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/trackpad",
+          "mode": "trackpad",
+          "parameters": {},
+          "inputs": {
+            "position": {
+              "output": "/actions/default_killhouse/in/primary2axis_axes"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/primary2axis_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/thumbstick",
+          "mode": "joystick",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/secondary2axis_button"
+            },
+            "position": {
+              "output": "/actions/default_killhouse/in/secondary2axis_axes"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/secondary2axis_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/trackpad",
+          "mode": "force_sensor",
+          "parameters": {},
+          "inputs": {
+            "force": {
+              "output": "/actions/default_killhouse/in/thumb_squeeze"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/b",
+          "mode": "button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/b_button"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/b_button_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/a",
+          "mode": "button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/a_button"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/a_button_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/grip",
+          "mode": "trigger",
+          "parameters": {},
+          "inputs": {
+            "pull": {
+              "output": "/actions/default_killhouse/in/grip_squeeze"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/grip_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/grip",
+          "mode": "button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/grip_button"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/left/input/trackpad",
+          "mode": "toggle_button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/primary2axis_button"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/a",
+          "mode": "button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/a_button"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/a_button_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/b",
+          "mode": "button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/b_button"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/b_button_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/grip",
+          "mode": "trigger",
+          "parameters": {},
+          "inputs": {
+            "pull": {
+              "output": "/actions/default_killhouse/in/grip_squeeze"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/grip_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/grip",
+          "mode": "button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/grip_button"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/thumbstick",
+          "mode": "joystick",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/secondary2axis_button"
+            },
+            "position": {
+              "output": "/actions/default_killhouse/in/secondary2axis_axes"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/secondary2axis_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trackpad",
+          "mode": "trackpad",
+          "parameters": {},
+          "inputs": {
+            "position": {
+              "output": "/actions/default_killhouse/in/primary2axis_axes"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/primary2axis_touch"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trackpad",
+          "mode": "force_sensor",
+          "parameters": {},
+          "inputs": {
+            "force": {
+              "output": "/actions/default_killhouse/in/thumb_squeeze"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trackpad",
+          "mode": "toggle_button",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/primary2axis_button"
+            }
+          }
+        },
+        {
+          "path": "/user/hand/right/input/trigger",
+          "mode": "trigger",
+          "parameters": {},
+          "inputs": {
+            "click": {
+              "output": "/actions/default_killhouse/in/trigger_button"
+            },
+            "pull": {
+              "output": "/actions/default_killhouse/in/trigger_axis"
+            },
+            "touch": {
+              "output": "/actions/default_killhouse/in/trigger_touch"
+            }
+          }
+        }
+      ],
+      "skeleton": [
+        {
+          "output": "/actions/default_killhouse/in/skeletonlefthand",
+          "path": "/user/hand/left/input/skeleton/left"
+        },
+        {
+          "output": "/actions/default_killhouse/in/skeletonrighthand",
+          "path": "/user/hand/right/input/skeleton/right"
+        }
+      ]
+    },
+    "/actions/killhousevr": {
+      "chords": [],
+      "poses": [],
+      "haptics": [],
+      "sources": [],
+      "skeleton": []
+    },
+    "/actions/platformer": {
+      "chords": [],
+      "poses": [],
+      "haptics": [],
+      "sources": [],
+      "skeleton": []
+    }
+  },
+  "controller_type": "knuckles",
+  "description": "initial default\ncan't assign left skeleton",
+  "name": "killhouse_default"
+}
