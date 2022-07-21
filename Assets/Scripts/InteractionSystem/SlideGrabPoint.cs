@@ -70,7 +70,7 @@ public class SlideGrabPoint : GrabPoint
 
     protected void Update()
     {
-        if (IsGrabbed && m_grabHand.input.BButtonPressed)
+        if (IsGrabbed)
         {
             var pullDirection = (m_grabHand.palmPosition.position - m_grabPointAnchor.transform.position);
             var backDirection = (_slideRear.position - _slideForward.position).normalized;

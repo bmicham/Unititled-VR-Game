@@ -9,14 +9,11 @@ public class GrabPoint : MonoBehaviour
     */
     public bool SetupInteraction;
     public bool IsSimpleInteract;
-    public bool IsHovered;
     public bool IsGrabbed;
     public InteractionStyle interactionStyle = InteractionStyle.Toggle;
     public bool HasPhysicalColliders = true;
     public GameObject _PhysicalCOLRoot;
     public GameObject objectRoot;
-    public GameObject m_hoverUI;
-    public Vector3 HoverUIScale = new Vector3(0.05f, 0.05f, 0f);
 
     [Header("Rigidbody Settings")]
     public Rigidbody _RB;
@@ -40,8 +37,6 @@ public class GrabPoint : MonoBehaviour
     public JointDrive slerpDrive;
 
     private Collider[] _PhysicalColliders;
-    private int uiScaleTime = 12;
-    private int elapsedFrames = 0;
     protected SavedRigidBody savedRigidBodyMass = new SavedRigidBody();
 
 
@@ -72,6 +67,7 @@ public class GrabPoint : MonoBehaviour
             _Jt.anchor = m_grabPointAnchor.localPosition;
             ConfigurableJointExtensions.SetTargetRotationLocal(_Jt, _initialHandRotation * Quaternion.Euler(m_rotOffset.x, m_rotOffset.y, m_rotOffset.z), m_startRot);
         }
+
     }
 
     public virtual void BeginGrab(VRHand hand) 
@@ -79,12 +75,10 @@ public class GrabPoint : MonoBehaviour
         if (IsGrabbed && m_grabHand != hand && m_grabHand != null)
         {
             m_grabHand.EndCurrentGrab(this);
-            DoHoverUI(false);
         }
 
         IsGrabbed = true;
         m_grabHand = hand;
-        DoHoverUI(false);
         if (HasPhysicalColliders)
             MoveCollidersToLayer(false, "ObjectInHand");
         CreateJoint(hand);
@@ -97,7 +91,6 @@ public class GrabPoint : MonoBehaviour
         DestroyJoint(hand);
         IsGrabbed = false;
         m_grabHand = null;
-        DoHoverUI(false);
     }
 
     protected virtual void DoInitialSetup() 
@@ -151,24 +144,6 @@ public class GrabPoint : MonoBehaviour
         _Jt.slerpDrive = slerpDrive;
     }
 
-    public void DoHoverUI(bool lerp) 
-    {
-        if (lerp)
-        {
-            if (m_hoverUI.transform.lossyScale == HoverUIScale)
-                return;
-            m_hoverUI.SetActive(true);
-            float interpolationRatio = (float)elapsedFrames / uiScaleTime;
-            Vector3 interpolatedPosition = m_hoverUI.transform.localScale = Vector3.Lerp(m_hoverUI.transform.localScale, HoverUIScale, interpolationRatio); ;
-            elapsedFrames = (elapsedFrames + 1) % (uiScaleTime + 1);
-        }
-        else
-        {
-            m_hoverUI.SetActive(false);
-            m_hoverUI.transform.localScale = Vector3.zero;
-        }
-    }
-
     /*
     public void RemoveRigidBody()
     {
@@ -201,21 +176,6 @@ public class GrabPoint : MonoBehaviour
             return endPoint;
         Vector3 vector3 = normalizedLength * dot;
         return startPoint + vector3;
-    }
-
-    private void OnTriggerStay()
-    {
-        if (IsGrabbed)
-            return;
-        Debug.Log("<color=blue>Interaction:</color> Hand hovering! " + gameObject.name);
-        IsHovered = true;
-        DoHoverUI(true);
-    }
-    private void OnTriggerExit()
-    {
-        if (IsGrabbed)
-            return;
-        DoHoverUI(false);
     }
 
     public void MoveCollidersToLayer(bool triggersToo, string layerName)

@@ -41,7 +41,8 @@ namespace KP
         public SteamVR_Action_Vibration Vibration;
         public SteamVR_Action_Skeleton Skeleton;
 
-        public GrabPoint currentGrabPoint;
+        private GrabPoint currentGrabPoint;
+        private GrabPoint hoveredGrabPoint;
 
         private float m_timeSinceGripButtonDown;
         private readonly Collider[] _colliders = new Collider[100];
@@ -51,13 +52,6 @@ namespace KP
         {
             input.hand = this;
             m_handColliderSize = m_handCollider.size;
-        }
-
-        private void Update() 
-        {
-            if (!Skeleton.deviceIsConnected)
-                return;
-            SetInputs();
         }
 
         private void FixedUpdate()
@@ -104,6 +98,8 @@ namespace KP
                 currentGrabPoint = null;
                 m_handCollider.size = m_handColliderSize;
             }
+
+            SetInputs();
         }
 
         public void EndCurrentGrab(GrabPoint grab) 

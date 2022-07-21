@@ -2848,7 +2848,6 @@ GameObject:
   - component: {fileID: 312456873}
   - component: {fileID: 312456874}
   - component: {fileID: 312456875}
-  - component: {fileID: 312456876}
   m_Layer: 6
   m_Name: GrabPoint_Handguard
   m_TagString: Untagged
@@ -2884,14 +2883,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 1
   _PhysicalCOLRoot: {fileID: 814314034}
   objectRoot: {fileID: 3837634365828087949}
-  m_hoverUI: {fileID: 919132148189158838}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 3837634365828087951}
   OverrideCenterOfMass: 0
   m_centerOfMass: {x: 0, y: 0, z: 0}
@@ -2920,22 +2916,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.015
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &312456876
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312456872}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &337519973
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,7 +4193,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540123932}
   m_Material: {fileID: 13400000, guid: 3ec3fdfa20dfcef4e8db96c5009ef2f8, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4435543, y: 1, z: 1.2088232}
@@ -6234,7 +6214,7 @@ GameObject:
   - component: {fileID: 957831860}
   - component: {fileID: 957831859}
   - component: {fileID: 957831858}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: HoverSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6249,8 +6229,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957831856}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.120000005, y: 0.12, z: 0.120000005}
+  m_LocalPosition: {x: -0.0034, y: 0.0014, z: -0.0942}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_Children: []
   m_Father: {fileID: 8427754025941103479}
   m_RootOrder: 3
@@ -6263,7 +6243,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957831856}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6850,6 +6830,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450652391802636}
+  - {fileID: 1791330721}
   m_Father: {fileID: 4470337970870917687}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7766,6 +7747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450652264342709}
+  - {fileID: 1540695953}
   m_Father: {fileID: 4470337970870917687}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8845,6 +8827,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450652778093807}
+  - {fileID: 1943517507}
   m_Father: {fileID: 4470337970870917687}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9533,7 +9516,7 @@ GameObject:
   - component: {fileID: 1513006030}
   - component: {fileID: 1513006029}
   - component: {fileID: 1513006028}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: HoverSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9547,9 +9530,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513006026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0034, y: 0.0014, z: -0.0942}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_Children: []
   m_Father: {fileID: 8427754025407334800}
   m_RootOrder: 3
@@ -9562,7 +9545,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513006026}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -9695,6 +9678,66 @@ MonoBehaviour:
   verbose: 0
   createComponents: 1
   updateDynamically: 1
+--- !u!1 &1540695952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540695953}
+  - component: {fileID: 1540695955}
+  - component: {fileID: 1540695954}
+  m_Layer: 12
+  m_Name: HoverDetector_Primary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1540695953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540695952}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194199923}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1540695954
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540695952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.015
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1540695955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540695952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6571613d9b3fb241851a97273635c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_grapPoint: {fileID: 1953441540}
+  m_hoverUI: {fileID: 919132148342717967}
+  HoverUIScale: {x: 0.045, y: 0.045, z: 0}
 --- !u!1 &1556231948
 GameObject:
   m_ObjectHideFlags: 0
@@ -10151,14 +10194,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 1
   _PhysicalCOLRoot: {fileID: 1296016436}
   objectRoot: {fileID: 0}
-  m_hoverUI: {fileID: 0}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 8281549063486795180}
   OverrideCenterOfMass: 0
   m_centerOfMass: {x: 0, y: 0, z: 0}
@@ -10889,6 +10929,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786627126}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1791330720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1791330721}
+  - component: {fileID: 1791330723}
+  - component: {fileID: 1791330722}
+  m_Layer: 12
+  m_Name: HoverDetector_Handguard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1791330721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791330720}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1045266409}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1791330722
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791330720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.015
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1791330723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791330720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6571613d9b3fb241851a97273635c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_grapPoint: {fileID: 312456874}
+  m_hoverUI: {fileID: 919132148189158838}
+  HoverUIScale: {x: 0.045, y: 0.045, z: 0}
 --- !u!1 &1791345932
 GameObject:
   m_ObjectHideFlags: 0
@@ -11832,6 +11932,66 @@ Transform:
   m_Father: {fileID: 29951082}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
+--- !u!1 &1943517506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943517507}
+  - component: {fileID: 1943517509}
+  - component: {fileID: 1943517508}
+  m_Layer: 12
+  m_Name: HoverDetector_ChargingHandle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1943517507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943517506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1333882943}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1943517508
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943517506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.015
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1943517509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943517506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6571613d9b3fb241851a97273635c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_grapPoint: {fileID: 649707903307551191}
+  m_hoverUI: {fileID: 919132149045167701}
+  HoverUIScale: {x: 0.035, y: 0.035, z: 0}
 --- !u!1 &1953441539
 GameObject:
   m_ObjectHideFlags: 0
@@ -11843,7 +12003,6 @@ GameObject:
   - component: {fileID: 1953441542}
   - component: {fileID: 1953441540}
   - component: {fileID: 1953441541}
-  - component: {fileID: 1953441543}
   m_Layer: 6
   m_Name: GrabPoint_Primary
   m_TagString: Untagged
@@ -11865,14 +12024,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 1
   _PhysicalCOLRoot: {fileID: 814314034}
   objectRoot: {fileID: 3837634365828087949}
-  m_hoverUI: {fileID: 919132148342717967}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 3837634365828087951}
   OverrideCenterOfMass: 1
   m_centerOfMass: {x: 0.17, y: -0.034, z: 0}
@@ -11910,22 +12066,6 @@ Transform:
   m_Father: {fileID: 4470337970870917687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1953441543
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953441539}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1957233535
 GameObject:
   m_ObjectHideFlags: 0
@@ -12941,14 +13081,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 1
   _PhysicalCOLRoot: {fileID: 1338403594}
   objectRoot: {fileID: 0}
-  m_hoverUI: {fileID: 0}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 919132148932825971}
   OverrideCenterOfMass: 0
   m_centerOfMass: {x: 0, y: 0, z: 0}
@@ -13212,7 +13349,6 @@ GameObject:
   - component: {fileID: 6926545989503023094}
   - component: {fileID: 649707903307551191}
   - component: {fileID: 649707903307551190}
-  - component: {fileID: 649707903307551192}
   m_Layer: 6
   m_Name: GrabPoint_ChargingHandle
   m_TagString: Untagged
@@ -13247,14 +13383,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 0
   _PhysicalCOLRoot: {fileID: 0}
   objectRoot: {fileID: 3837634365828087949}
-  m_hoverUI: {fileID: 919132149045167701}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 3837634365828087951}
   OverrideCenterOfMass: 0
   m_centerOfMass: {x: 0, y: 0, z: 0}
@@ -13275,22 +13408,6 @@ MonoBehaviour:
   _SlideSpeed: 1
   DoTests: 0
   Difficulty: 0.05
---- !u!54 &649707903307551192
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649707903307551189}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &690052330822808283
 GameObject:
   m_ObjectHideFlags: 0
@@ -13538,7 +13655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &919132148342717967
 GameObject:
   m_ObjectHideFlags: 0
@@ -13557,7 +13674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &919132148932825969
 GameObject:
   m_ObjectHideFlags: 0
@@ -13620,14 +13737,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 1
   _PhysicalCOLRoot: {fileID: 530109328}
   objectRoot: {fileID: 0}
-  m_hoverUI: {fileID: 0}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 919132148932825971}
   OverrideCenterOfMass: 1
   m_centerOfMass: {x: 0, y: 0.039, z: -0.015}
@@ -13656,7 +13770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1077081957526312250
 GameObject:
   m_ObjectHideFlags: 0
@@ -17329,14 +17443,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SetupInteraction: 0
   IsSimpleInteract: 0
-  IsHovered: 0
   IsGrabbed: 0
   interactionStyle: 0
   HasPhysicalColliders: 1
   _PhysicalCOLRoot: {fileID: 1296016436}
   objectRoot: {fileID: 0}
-  m_hoverUI: {fileID: 0}
-  HoverUIScale: {x: 0.05, y: 0.05, z: 0}
   _RB: {fileID: 8281549063486795180}
   OverrideCenterOfMass: 1
   m_centerOfMass: {x: 0, y: 0, z: 0}
@@ -17983,7 +18094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74fdecb901826a43a0620f92cb04f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KP_Inputs: {fileID: 8427754025428443308}
+  KP_Inputs: {fileID: 8427754025941103485}
   SprintRequiresDoubleClick: 1
   JumpDamper: 3000
   JumpCrouchAmount: 0.25
@@ -18002,17 +18113,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.25
       value: 0.6
-      inSlope: 0.6666667
-      outSlope: 0.6666667
+      inSlope: 0.63367975
+      outSlope: 0.63367975
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0.5333333
-      outSlope: 0.5333333
+      value: 0.95051956
+      inSlope: 0.4673594
+      outSlope: 0.4673594
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -18071,7 +18182,7 @@ MonoBehaviour:
   RetractLevel: 1
   JumpTimeout: 0.5
   StompSpeed: 9
-  JumpMovementBonus: 0.25
+  JumpMovementBonus: 0.15
   JumpSprintBonus: 0.25
   JumpMovementCurve:
     serializedVersion: 2
@@ -18538,6 +18649,7 @@ GameObject:
   - component: {fileID: 8427754025407334800}
   - component: {fileID: 8427754025407334803}
   - component: {fileID: 8427754025407334802}
+  - component: {fileID: 8427754025407334810}
   m_Layer: 8
   m_Name: RightHand
   m_TagString: Untagged
@@ -18545,66 +18657,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8427754025428443304
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8427754025428443307}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.516, z: -0.124}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1529482628}
-  m_Father: {fileID: 8427754024658238799}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8427754025428443307
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8427754025428443304}
-  - component: {fileID: 8427754025428443310}
-  - component: {fileID: 8427754025428443309}
-  - component: {fileID: 8427754025428443308}
-  m_Layer: 10
-  m_Name: LeftController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &8427754025428443308
+--- !u!114 &8427754025407334810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8427754025428443307}
+  m_GameObject: {fileID: 8427754025407334809}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac55aca48a65c704f9e783f89369fe29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherHand: {fileID: 8427754025519117512}
+  otherHand: {fileID: 8427754025941103485}
   GrabLayer:
     serializedVersion: 2
     m_Bits: 64
-  physicalHand: {fileID: 8427754025941103478}
+  physicalHand: {fileID: 8427754025407334803}
   playerRig: {fileID: 8427754024420429559}
-  palmPosition: {fileID: 1243244765}
+  palmPosition: {fileID: 1513100124}
   interactorSphereRadius: 0.15
-  m_handCollider: {fileID: 1414692248}
+  m_handCollider: {fileID: 540123934}
   m_handColliderSize: {x: 0, y: 0, z: 0}
   m_handColliderRadius: 0.1
-  IsRightHand: 0
-  HandSource: 1
-  input: {fileID: 8427754025428443309}
+  IsRightHand: 1
+  HandSource: 2
+  input: {fileID: 8427754025519117513}
   Trigger_Button:
     actionPath: /actions/default_killhouse/in/Trigger_Button
     needsReinit: 0
@@ -18663,10 +18741,42 @@ MonoBehaviour:
     actionPath: /actions/default_killhouse/out/Haptic
     needsReinit: 0
   Skeleton:
-    actionPath: /actions/default_killhouse/in/SkeletonLeftHand
+    actionPath: /actions/default_killhouse/in/SkeletonRightHand
     needsReinit: 0
-  currentGrabPoint: {fileID: 0}
   currentHandState: 1
+--- !u!4 &8427754025428443304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427754025428443307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.516, z: -0.124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1529482628}
+  m_Father: {fileID: 8427754024658238799}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8427754025428443307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8427754025428443304}
+  - component: {fileID: 8427754025428443310}
+  - component: {fileID: 8427754025428443309}
+  m_Layer: 10
+  m_Name: LeftController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &8427754025428443309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18680,7 +18790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrouchRate: 0
-  hand: {fileID: 8427754025428443308}
+  hand: {fileID: 8427754025941103485}
   TriggerUp: 0
   TriggerDown: 0
   TriggerPressed: 0
@@ -18853,7 +18963,6 @@ GameObject:
   - component: {fileID: 8427754025519117508}
   - component: {fileID: 8427754025519117514}
   - component: {fileID: 8427754025519117513}
-  - component: {fileID: 8427754025519117512}
   m_Layer: 10
   m_Name: RightController
   m_TagString: Untagged
@@ -18861,94 +18970,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8427754025519117512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8427754025519117511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac55aca48a65c704f9e783f89369fe29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherHand: {fileID: 8427754025428443308}
-  GrabLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  physicalHand: {fileID: 8427754025407334803}
-  playerRig: {fileID: 8427754024420429559}
-  palmPosition: {fileID: 1513100124}
-  interactorSphereRadius: 0.15
-  m_handCollider: {fileID: 540123934}
-  m_handColliderSize: {x: 0, y: 0, z: 0}
-  m_handColliderRadius: 0.1
-  IsRightHand: 1
-  HandSource: 2
-  input: {fileID: 8427754025519117513}
-  Trigger_Button:
-    actionPath: /actions/default_killhouse/in/Trigger_Button
-    needsReinit: 0
-  Trigger_Touch:
-    actionPath: /actions/default_killhouse/in/Trigger_Touch
-    needsReinit: 0
-  Primary2Axis_Button:
-    actionPath: /actions/default_killhouse/in/Primary2Axis_Button
-    needsReinit: 0
-  Primary2Axis_Touch:
-    actionPath: /actions/default_killhouse/in/Primary2Axis_Touch
-    needsReinit: 0
-  Secondary2Axis_Button:
-    actionPath: /actions/default_killhouse/in/Secondary2Axis_Button
-    needsReinit: 0
-  Secondary2Axis_Touch:
-    actionPath: /actions/default_killhouse/in/Secondary2Axis_Touch
-    needsReinit: 0
-  A_Button:
-    actionPath: /actions/default_killhouse/in/A_Button
-    needsReinit: 0
-  A_Button_Touch:
-    actionPath: /actions/default_killhouse/in/A_Button_Touch
-    needsReinit: 0
-  B_Button:
-    actionPath: /actions/default_killhouse/in/B_Button
-    needsReinit: 0
-  B_Button_Touch:
-    actionPath: /actions/default_killhouse/in/B_Button_Touch
-    needsReinit: 0
-  Grip_Button:
-    actionPath: /actions/default_killhouse/in/Grip_Button
-    needsReinit: 0
-  Grip_Touch:
-    actionPath: /actions/default_killhouse/in/Grip_Touch
-    needsReinit: 0
-  Trigger_Axis:
-    actionPath: /actions/default_killhouse/in/Trigger_Axis
-    needsReinit: 0
-  Grip_Squeeze:
-    actionPath: /actions/default_killhouse/in/Grip_Squeeze
-    needsReinit: 0
-  Thumb_Squeeze:
-    actionPath: /actions/default_killhouse/in/Thumb_Squeeze
-    needsReinit: 0
-  Primary2Axis_Axes:
-    actionPath: /actions/default_killhouse/in/Primary2Axis_Axes
-    needsReinit: 0
-  Secondary2Axis_Axes:
-    actionPath: /actions/default_killhouse/in/Secondary2Axis_Axes
-    needsReinit: 0
-  Pose:
-    actionPath: /actions/default_killhouse/in/Pose
-    needsReinit: 0
-  Vibration:
-    actionPath: /actions/default_killhouse/out/Haptic
-    needsReinit: 0
-  Skeleton:
-    actionPath: /actions/default_killhouse/in/SkeletonRightHand
-    needsReinit: 0
-  currentGrabPoint: {fileID: 0}
-  currentHandState: 1
 --- !u!114 &8427754025519117513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18962,7 +18983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrouchRate: 0
-  hand: {fileID: 8427754025519117512}
+  hand: {fileID: 8427754025407334810}
   TriggerUp: 0
   TriggerDown: 0
   TriggerPressed: 0
@@ -19522,6 +19543,7 @@ GameObject:
   - component: {fileID: 8427754025941103479}
   - component: {fileID: 8427754025941103478}
   - component: {fileID: 8427754025941103473}
+  - component: {fileID: 8427754025941103485}
   m_Layer: 8
   m_Name: LeftHand
   m_TagString: Untagged
@@ -19529,6 +19551,93 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8427754025941103485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427754025941103484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac55aca48a65c704f9e783f89369fe29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherHand: {fileID: 8427754025407334810}
+  GrabLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  physicalHand: {fileID: 8427754025941103478}
+  playerRig: {fileID: 8427754024420429559}
+  palmPosition: {fileID: 1243244765}
+  interactorSphereRadius: 0.15
+  m_handCollider: {fileID: 1414692248}
+  m_handColliderSize: {x: 0, y: 0, z: 0}
+  m_handColliderRadius: 0.1
+  IsRightHand: 0
+  HandSource: 1
+  input: {fileID: 8427754025428443309}
+  Trigger_Button:
+    actionPath: /actions/default_killhouse/in/Trigger_Button
+    needsReinit: 0
+  Trigger_Touch:
+    actionPath: /actions/default_killhouse/in/Trigger_Touch
+    needsReinit: 0
+  Primary2Axis_Button:
+    actionPath: /actions/default_killhouse/in/Primary2Axis_Button
+    needsReinit: 0
+  Primary2Axis_Touch:
+    actionPath: /actions/default_killhouse/in/Primary2Axis_Touch
+    needsReinit: 0
+  Secondary2Axis_Button:
+    actionPath: /actions/default_killhouse/in/Secondary2Axis_Button
+    needsReinit: 0
+  Secondary2Axis_Touch:
+    actionPath: /actions/default_killhouse/in/Secondary2Axis_Touch
+    needsReinit: 0
+  A_Button:
+    actionPath: /actions/default_killhouse/in/A_Button
+    needsReinit: 0
+  A_Button_Touch:
+    actionPath: /actions/default_killhouse/in/A_Button_Touch
+    needsReinit: 0
+  B_Button:
+    actionPath: /actions/default_killhouse/in/B_Button
+    needsReinit: 0
+  B_Button_Touch:
+    actionPath: /actions/default_killhouse/in/B_Button_Touch
+    needsReinit: 0
+  Grip_Button:
+    actionPath: /actions/default_killhouse/in/Grip_Button
+    needsReinit: 0
+  Grip_Touch:
+    actionPath: /actions/default_killhouse/in/Grip_Touch
+    needsReinit: 0
+  Trigger_Axis:
+    actionPath: /actions/default_killhouse/in/Trigger_Axis
+    needsReinit: 0
+  Grip_Squeeze:
+    actionPath: /actions/default_killhouse/in/Grip_Squeeze
+    needsReinit: 0
+  Thumb_Squeeze:
+    actionPath: /actions/default_killhouse/in/Thumb_Squeeze
+    needsReinit: 0
+  Primary2Axis_Axes:
+    actionPath: /actions/default_killhouse/in/Primary2Axis_Axes
+    needsReinit: 0
+  Secondary2Axis_Axes:
+    actionPath: /actions/default_killhouse/in/Secondary2Axis_Axes
+    needsReinit: 0
+  Pose:
+    actionPath: /actions/default_killhouse/in/Pose
+    needsReinit: 0
+  Vibration:
+    actionPath: /actions/default_killhouse/out/Haptic
+    needsReinit: 0
+  Skeleton:
+    actionPath: /actions/default_killhouse/in/SkeletonLeftHand
+    needsReinit: 0
+  currentHandState: 1
 --- !u!1 &8427754025979231813
 GameObject:
   m_ObjectHideFlags: 0
