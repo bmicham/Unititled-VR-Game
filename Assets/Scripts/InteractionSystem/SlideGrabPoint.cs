@@ -23,7 +23,6 @@ public class SlideGrabPoint : GrabPoint
 
     private void Awake()
     {
-        _startPosition = transform.localPosition;
         _maximumDistance = Vector3.Distance(_slideRear.localPosition, _slideForward.localPosition);
     }
 

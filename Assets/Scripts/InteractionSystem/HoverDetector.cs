@@ -8,7 +8,6 @@ public class HoverDetector : MonoBehaviour
     public GameObject m_hoverUI;
     public Vector3 HoverUIScale = new Vector3(0.05f, 0.05f, 0f);
 
-    private bool IsHovered = false;
     private int uiScaleTime = 64;
     private int elapsedFrames = 0;
 

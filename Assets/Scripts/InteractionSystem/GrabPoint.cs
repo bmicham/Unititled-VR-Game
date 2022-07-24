@@ -164,18 +164,18 @@ public class GrabPoint : MonoBehaviour
     }
     */
 
-    public Vector3 GetClosestValidPoint(Vector3 startPoint, Vector3 endPoint, Vector3 grabPoint)
+    public Vector3 GetClosestValidPoint(Vector3 vA, Vector3 vB, Vector3 vPoint)
     {
-        Vector3 position = grabPoint - startPoint;
-        Vector3 normalizedLength = (endPoint - startPoint).normalized;
-        float distance = Vector3.Distance(startPoint, endPoint);
-        float dot = Vector3.Dot(normalizedLength, position);
-        if ((double)dot <= 0.0)
-            return startPoint;
-        if ((double)dot >= (double)distance)
-            return endPoint;
-        Vector3 vector3 = normalizedLength * dot;
-        return startPoint + vector3;
+        Vector3 rhs = vPoint - vA;
+        Vector3 normalized = (vB - vA).normalized;
+        float num1 = Vector3.Distance(vA, vB);
+        float num2 = Vector3.Dot(normalized, rhs);
+        if ((double)num2 <= 0.0)
+            return vA;
+        if ((double)num2 >= (double)num1)
+            return vB;
+        Vector3 vector3 = normalized * num2;
+        return vA + vector3;
     }
 
     public void MoveCollidersToLayer(bool triggersToo, string layerName)
