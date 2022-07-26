@@ -35,7 +35,10 @@ public class GrabPoint : MonoBehaviour
     public Quaternion _initialHandRotation;
     [HideInInspector]
     public JointDrive slerpDrive;
+    [HideInInspector]
+    public bool m_hasTriggeredUpSinceBegin;
 
+    protected float triggerCooldown = 0.5f;
     private Collider[] _PhysicalColliders;
     protected SavedRigidBody savedRigidBodyMass = new SavedRigidBody();
 
@@ -62,12 +65,14 @@ public class GrabPoint : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (SetupInteraction && _Jt && IsGrabbed)
+        if (!IsGrabbed)
+            return;
+        UpdateInteraction(m_grabHand);
+        if (SetupInteraction && _Jt)
         {
             _Jt.anchor = m_grabPointAnchor.localPosition;
             ConfigurableJointExtensions.SetTargetRotationLocal(_Jt, _initialHandRotation * Quaternion.Euler(m_rotOffset.x, m_rotOffset.y, m_rotOffset.z), m_startRot);
         }
-
     }
 
     public virtual void BeginGrab(VRHand hand) 
@@ -79,9 +84,20 @@ public class GrabPoint : MonoBehaviour
 
         IsGrabbed = true;
         m_grabHand = hand;
+        m_hasTriggeredUpSinceBegin = false;
         if (HasPhysicalColliders)
             MoveCollidersToLayer(false, "ObjectInHand");
         CreateJoint(hand);
+    }
+
+
+    public virtual void UpdateInteraction(VRHand hand)
+    {
+        if (!m_hasTriggeredUpSinceBegin && m_grabHand.input.TriggerFloat < 0.150000005960464)
+            m_hasTriggeredUpSinceBegin = true;
+        if (triggerCooldown <= 0.0)
+            return;
+        triggerCooldown -= Time.deltaTime;
     }
 
     public virtual void EndGrab(VRHand hand)

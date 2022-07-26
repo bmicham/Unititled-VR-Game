@@ -9,6 +9,7 @@ namespace KP
         //public GameObject Display_Controller;
         public VRHand otherHand;
         public LayerMask GrabLayer;
+        public GameObject model;
         public Rigidbody physicalHand;
         public Transform playerRig;
         public Transform palmPosition;
@@ -88,6 +89,7 @@ namespace KP
                         currentGrabPoint = hit.GetComponent<GrabPoint>();
                         currentGrabPoint.BeginGrab(this);
                         currentHandState = HandState.Interacting;
+                        model.SetActive(false);
                     }
                 }
             }
@@ -97,6 +99,7 @@ namespace KP
                 currentHandState = HandState.Free;
                 currentGrabPoint = null;
                 m_handCollider.size = m_handColliderSize;
+                model.SetActive(true);
             }
 
             SetInputs();
