@@ -16,12 +16,12 @@ MonoBehaviour:
   m_jointPrimaryAxis: {x: 1, y: 0, z: 0}
   m_jointSecondaryAxis: {x: 0, y: 1, z: 0}
   _LinearLimit: 0.1
-  SetXMotion: 1
+  SetXMotion: 0
   SetYMotion: 0
-  SetZMotion: 0
-  xMotion: 1
+  SetZMotion: 1
+  xMotion: 2
   yMotion: 2
-  zMotion: 2
+  zMotion: 1
   AngularXMotion: 2
   AngularYMotion: 2
   AngularZMotion: 2

@@ -42,7 +42,8 @@ namespace KP
         public SteamVR_Action_Vibration Vibration;
         public SteamVR_Action_Skeleton Skeleton;
 
-        private GrabPoint currentGrabPoint;
+        [HideInInspector]
+        public GrabPoint currentGrabPoint;
         private GrabPoint hoveredGrabPoint;
 
         private float m_timeSinceGripButtonDown;
@@ -60,7 +61,7 @@ namespace KP
             if (!Skeleton.deviceIsConnected)
                 return;
 
-            if (input.TriggerDown && currentHandState == HandState.Free)
+            if (input.GripDown && currentHandState == HandState.Free)
             {
                 var hits = Physics.OverlapSphereNonAlloc(palmPosition.position, interactorSphereRadius, _colliders, GrabLayer, QueryTriggerInteraction.Ignore);
                 if (hits > 0)
@@ -93,7 +94,7 @@ namespace KP
                     }
                 }
             }
-            else if (input.TriggerDown && currentHandState == HandState.Interacting)
+            else if (input.GripDown && currentHandState == HandState.Interacting)
             {
                 currentGrabPoint.EndGrab(this);
                 currentHandState = HandState.Free;

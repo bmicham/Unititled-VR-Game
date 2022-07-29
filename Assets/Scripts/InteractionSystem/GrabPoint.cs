@@ -160,7 +160,6 @@ public class GrabPoint : MonoBehaviour
         _Jt.slerpDrive = slerpDrive;
     }
 
-    /*
     public void RemoveRigidBody()
     {
         if (_RB == null)
@@ -178,7 +177,6 @@ public class GrabPoint : MonoBehaviour
         _RB.maxAngularVelocity = 100f;
         _RB.centerOfMass = m_centerOfMass;
     }
-    */
 
     public Vector3 GetClosestValidPoint(Vector3 vA, Vector3 vB, Vector3 vPoint)
     {
@@ -236,7 +234,5 @@ public class GrabPoint : MonoBehaviour
             return;
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position + transform.rotation * m_centerOfMass, 0.01f);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(m_grabPointAnchor.position, 0.015f);
     }
 }

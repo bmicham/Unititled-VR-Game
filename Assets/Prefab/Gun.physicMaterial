@@ -9,6 +9,6 @@ PhysicMaterial:
   m_Name: Gun
   dynamicFriction: 0.75
   staticFriction: 0.86
-  bounciness: 0.2
+  bounciness: 0.05
   frictionCombine: 2
   bounceCombine: 2

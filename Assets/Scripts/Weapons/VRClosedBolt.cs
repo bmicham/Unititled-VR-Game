@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using KP;
 using UnityEngine;
 
-public class VRClosedBolt : GrabPoint
+public class VRClosedBolt : MonoBehaviour
 {
+    public bool DoTest = false;
+    public float SpringStiffness = 5f;
     [Header("Bolt")]
-    public VRFirearm_ClosedBolt Weapon;
+    public VRFirearm_ClosedBolt parentFirearm;
     public float Speed_Forward;
     public float Speed_Rearward;
-    public float Speed_Held;
     public float _BoltSpeed = 5f;
+    public float _BoltForce = 5f;
+    public float SpeedHeld = 1f;
     public BoltPos CurPos;
     public BoltPos LastPos;
     public Transform Point_Bolt_Forward;
+    public Transform Point_Bolt_Lock;
     public Transform Point_Bolt_Rear;
     public bool HasLastRoundBoltHoldOpen = true;
     //public bool UsesAKSafetyLock;
@@ -21,12 +25,12 @@ public class VRClosedBolt : GrabPoint
     private float m_boltZ_current;
     private float m_boltZ_heldTarget;
     private float m_boltZ_forward;
+    private float m_boltZ_lock;
     private float m_boltZ_rear;
     private float m_boltZ_safetylock;
     private bool m_isBoltLocked;
     private bool m_isHandleHeld;
     private float m_handleLerp;
-    private float _BoltMaxDistance;
     public bool HasBoltCatchReleaseButton;
     private bool m_isBoltCatchHeldOnHandle;
     private bool m_isReleaseCatchHeldOnHandle;
@@ -36,43 +40,23 @@ public class VRClosedBolt : GrabPoint
     public Vector3 BarrelForward;
     public Vector3 BarrelRearward;
     private bool m_isBarrelReciprocating;
-    /*
     [Header("Hammer")]
     public bool HasHammer;
     public Transform Hammer;
     public Vector3 HammerForward;
     public Vector3 HammerRearward;
-    [Header("Rotating Bit")]
-    public bool HasRotatingPart;
-    public Transform RotatingPart;
-    public Vector3 RotatingPartNeutralEulers;
-    public Vector3 RotatingPartLeftEulers;
-    public Vector3 RotatingPartRightEulers;
-    [Header("Z Rot Part")]
-    public bool HasZRotPart;
-    public Transform ZRotPiece;
-    public AnimationCurve ZRotCurve;
-    public Vector2 ZAngles;
-    public bool ZRotPieceDips;
-    public float DipMagnitude;
-    public bool ZRotPieceLags;
-    public float LagMagnitude;
-    [Header("Z Scale Part")]
-    public bool HasZScalePart;
-    public Transform ZScalePiece;
-    public AnimationCurve ZScaleCurve;
-    */
 
     protected void Awake()
     {
-        m_boltZ_current = transform.localPosition.x;
-        m_boltZ_forward = Point_Bolt_Forward.localPosition.x;
-        m_boltZ_rear = Point_Bolt_Rear.localPosition.x;
-        _BoltMaxDistance = m_boltZ_forward - m_boltZ_rear;
-        //if (!UsesAKSafetyLock)
-        //return;
-        //m_boltZ_safetylock = Point_Bolt_SafetyLock.localPosition.x;
+        m_boltZ_current = transform.localPosition.z;
+        m_boltZ_forward = Point_Bolt_Forward.localPosition.z;
+        m_boltZ_lock = Point_Bolt_Lock.localPosition.z;
+        m_boltZ_rear = Point_Bolt_Rear.localPosition.z;
     }
+
+    public float GetBoltLerpBetweenLockAndFore() => Mathf.InverseLerp(m_boltZ_lock, m_boltZ_forward, m_boltZ_current);
+
+    public float GetBoltLerpBetweenRearAndFore() => Mathf.InverseLerp(m_boltZ_rear, m_boltZ_forward, m_boltZ_current);
 
     public void LockBolt()
     {
@@ -86,47 +70,13 @@ public class VRClosedBolt : GrabPoint
         if (!m_isBoltLocked)
             return;
         //if (!IsGrabbed)
-            //Weapon.PlayAudioEvent(FirearmAudioEventType.BoltRelease);
+            //parentFirearm.PlayAudioEvent(FirearmAudioEventType.BoltRelease);
         m_isBoltLocked = false;
     }
 
-    public bool IsBoltLocked() => m_isBoltLocked;
-
-    public override void UpdateInteraction(VRHand hand)
+    public bool IsBoltLocked()
     {
-        base.UpdateInteraction(hand);
-        //if (HasRotatingPart)
-            //RotatingPart.localEulerAngles = Vector3.Dot((transform.position - m_grabHand.palmPosition.position).normalized, transform.right) <= 0.0 ? RotatingPartRightEulers : RotatingPartLeftEulers;
-        if (!hand.input.TouchpadDown)
-            return;
-        if (Vector2.Angle(hand.input.TouchpadAxes, Vector2.down) < 45.0 && HasBoltCatchReleaseButton)
-        {
-            m_isBoltCatchHeldOnHandle = true;
-            //ForceBreakInteraction();
-        }
-        else
-        {
-            if (Vector2.Angle(hand.input.TouchpadAxes, Vector2.up) >= 45.0 || !HasBoltCatchReleaseButton)
-                return;
-            m_isReleaseCatchHeldOnHandle = true;
-            //ForceBreakInteraction();
-        }
-    }
-
-    public override void EndGrab(VRHand hand)
-    {
-        if (!m_isBoltLocked)
-            m_curBoltSpeed = Speed_Forward;
-        if (m_isBoltCatchHeldOnHandle)
-        {
-            m_isBoltCatchHeldOnHandle = false;
-        }
-        if (m_isReleaseCatchHeldOnHandle)
-        {
-            m_isReleaseCatchHeldOnHandle = false;
-            ReleaseBolt();
-        }
-        base.EndGrab(hand);
+        return m_isBoltLocked;
     }
 
     public void UpdateHandleHeldState(bool state, float lerp)
@@ -143,86 +93,102 @@ public class VRClosedBolt : GrabPoint
         m_isBarrelReciprocating = true;
     }
 
-    public bool IsBoltForwardOfSafetyLock() => m_boltZ_current > m_boltZ_safetylock;
+    public bool IsBoltForwardOfSafetyLock()
+    {
+        return m_boltZ_current > m_boltZ_safetylock;
+    }
 
     public void UpdateBolt()
     {
-        if (CurPos != VRClosedBolt.BoltPos.Forward && !IsGrabbed)
+        bool flag = false;
+        if (m_isHandleHeld)
+            flag = true;
+        if (m_isHandleHeld)
+            m_boltZ_heldTarget = Mathf.Lerp(m_boltZ_forward, m_boltZ_rear, m_handleLerp);
+        Vector2 vector2 = new Vector2(m_boltZ_rear, m_boltZ_forward);
+        if (m_boltZ_current <= m_boltZ_lock && m_isBoltLocked)
+            vector2 = new Vector2(m_boltZ_rear, m_boltZ_lock);
+        if (flag)
+            m_curBoltSpeed = 0.0f;
+        else if (CurPos < BoltPos.LockedToRear && m_curBoltSpeed >= 0.0 || LastPos >= BoltPos.Rear)
+            m_curBoltSpeed = Mathf.MoveTowards(m_curBoltSpeed, Speed_Forward, Time.deltaTime * SpringStiffness);
+        float boltZCurrent1 = m_boltZ_current;
+        float boltZCurrent2 = m_boltZ_current;
+        float num1 = Mathf.Clamp(!flag ? m_boltZ_current + m_curBoltSpeed * Time.deltaTime : Mathf.MoveTowards(m_boltZ_current, m_boltZ_heldTarget, SpeedHeld * Time.deltaTime), vector2.x, vector2.y);
+        if (Mathf.Abs(num1 - m_boltZ_current) > Mathf.Epsilon)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Point_Bolt_Forward.localPosition, _BoltSpeed * Time.deltaTime);
+            m_boltZ_current = num1;
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, m_boltZ_current);
+            if (HasReciprocatingBarrel && m_isBarrelReciprocating)
+                Barrel.localPosition = Vector3.Lerp(BarrelForward, BarrelRearward, 1f - GetBoltLerpBetweenLockAndFore());
         }
-        if (Weapon.chargeHandle.IsGrabbed)
-        {
-            transform.localPosition = Vector3.Lerp(Point_Bolt_Forward.localPosition, Point_Bolt_Rear.localPosition, Weapon.chargeHandle.GetBoltLerpBetweenRearAndFore());
-        }
-        m_boltZ_current = transform.localPosition.x;
-        var num2 = Mathf.InverseLerp(m_boltZ_forward, m_boltZ_rear, m_boltZ_current);
+        else
+            m_curBoltSpeed = 0.0f;
+        if (HasHammer)
+            Hammer.localEulerAngles = !parentFirearm.IsHammerCocked ? Vector3.Lerp(HammerRearward, HammerForward, GetBoltLerpBetweenLockAndFore()) : HammerRearward;
         BoltPos curPos1 = CurPos;
-        BoltPos BoltPos = num2 <= 0 ? BoltPos.Forward : (num2 >= 1.0 ? BoltPos.Rear : BoltPos.ForwardToMid);
+        BoltPos boltPos = Mathf.Abs(m_boltZ_current - m_boltZ_forward) >= 1.0 / 1000.0 ? (Mathf.Abs(m_boltZ_current - m_boltZ_lock) >= 1.0 / 1000.0 ? (Mathf.Abs(m_boltZ_current - m_boltZ_rear) >= 1.0 / 1000.0 ? (m_boltZ_current <= m_boltZ_lock ? BoltPos.LockedToRear : BoltPos.ForwardToMid) : BoltPos.Rear) : BoltPos.Locked) : BoltPos.Forward;
         int curPos2 = (int)CurPos;
-        CurPos = (BoltPos)Mathf.Clamp((int)BoltPos, curPos2 - 1, curPos2 + 1);
-
+        CurPos = boltPos;
+        if (CurPos == BoltPos.Rear && LastPos != BoltPos.Rear)
+            BoltEvent_SmackRear();
+        if (CurPos == BoltPos.Locked && LastPos != BoltPos.Locked)
+            BoltEvent_BoltCaught();
+        if (CurPos >= BoltPos.Locked && LastPos < BoltPos.Locked)
+            BoltEvent_EjectRound();
+        if (CurPos < BoltPos.Locked && LastPos > BoltPos.ForwardToMid)
+            BoltEvent_ExtractRoundFromMag();
         if (CurPos == BoltPos.Forward && LastPos != BoltPos.Forward)
-        {
-            Debug.Log("<color=green> Event: </color> Bolt arrived at forward position!");
             BoltEvent_ArriveAtFore();
-        }
-        else if (CurPos == BoltPos.Rear && LastPos == BoltPos.ForwardToMid && (LastPos != BoltPos.Rear || LastPos != BoltPos.Forward))
-        {
-            Debug.Log("<color=green> Event: </color> Bolt smacked Rear!");
-        }
+        if (CurPos >= BoltPos.Locked && (HasLastRoundBoltHoldOpen && parentFirearm.currentLoadedMagazine != null && (!parentFirearm.currentLoadedMagazine.HasRound())))
+            LockBolt();
         LastPos = CurPos;
     }
 
     private void BoltEvent_ArriveAtFore()
     {
-        //Weapon.ChamberRound();
+        parentFirearm.ChamberRound();
         if (HasReciprocatingBarrel && m_isBarrelReciprocating)
         {
             m_isBarrelReciprocating = false;
             Barrel.localPosition = BarrelForward;
         }
-        //if (IsGrabbed)
-        //    Weapon.PlayAudioEvent(FirearmAudioEventType.BoltSlideForwardHeld);
-        //else
-        //    Weapon.PlayAudioEvent(FirearmAudioEventType.BoltSlideForward);
+        //parentFirearm.PlayAudioEvent(FirearmAudioEventType.BoltSlideForward);
     }
 
     private void BoltEvent_EjectRound()
     {
-        //Weapon.EjectExtractedRound();
-        //Weapon.CockHammer();
+        parentFirearm.EjectExtractedRound();
+        parentFirearm.CockHammer();
     }
 
-    //private void BoltEvent_ExtractRoundFromMag() => Weapon.BeginChamberingRound();
+    private void BoltEvent_ExtractRoundFromMag()
+    {
+        parentFirearm.BeginChamberingRound();
+    }
 
     private void BoltEvent_BoltCaught()
     {
         if (!m_isBoltLocked)
             return;
-        //Weapon.PlayAudioEvent(FirearmAudioEventType.BoltSlideBackLocked);
+        //parentFirearm.PlayAudioEvent(FirearmAudioEventType.BoltSlideBackLocked);
     }
 
     private void BoltEvent_SmackRear()
     {
-        /*
-        if ((IsGrabbed || m_isHandleHeld) && (!Weapon.BoltLocksWhenNoMagazineFound || Weapon.Magazine != null))
+        if (m_isHandleHeld && (!parentFirearm.BoltLocksWhenNoMagazineFound || parentFirearm.currentLoadedMagazine != null))
             ReleaseBolt();
-        if (Weapon.EjectsMagazineOnEmpty && Weapon.Magazine != null && !Weapon.Magazine.HasARound())
-            Weapon.EjectMag();
-        if (Weapon.BoltLocksWhenNoMagazineFound && Weapon.Magazine == null)
+        if (parentFirearm.BoltLocksWhenNoMagazineFound && parentFirearm.currentLoadedMagazine == null)
             LockBolt();
-        if (IsGrabbed)
-            Weapon.PlayAudioEvent(FirearmAudioEventType.BoltSlideBackHeld);
-        else
-            Weapon.PlayAudioEvent(FirearmAudioEventType.BoltSlideBack);
-        */
+        //parentFirearm.PlayAudioEvent(FirearmAudioEventType.BoltSlideBack);
     }
 
     public enum BoltPos
     {
         Forward,
         ForwardToMid,
+        Locked,
+        LockedToRear,
         Rear,
     }
 }
