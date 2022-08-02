@@ -65,13 +65,9 @@ public class GrabPoint : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (!IsGrabbed)
-            return;
-        UpdateInteraction(m_grabHand);
-        if (SetupInteraction && _Jt)
+        if (IsGrabbed)
         {
-            _Jt.anchor = m_grabPointAnchor.localPosition;
-            ConfigurableJointExtensions.SetTargetRotationLocal(_Jt, _initialHandRotation * Quaternion.Euler(m_rotOffset.x, m_rotOffset.y, m_rotOffset.z), m_startRot);
+            UpdateInteraction(m_grabHand);
         }
     }
 

@@ -61,7 +61,7 @@ namespace KP
             if (!Skeleton.deviceIsConnected)
                 return;
 
-            if (input.GripDown && currentHandState == HandState.Free)
+            if (input.IsGrabDown && currentHandState == HandState.Free)
             {
                 var hits = Physics.OverlapSphereNonAlloc(palmPosition.position, interactorSphereRadius, _colliders, GrabLayer, QueryTriggerInteraction.Ignore);
                 if (hits > 0)
@@ -90,17 +90,17 @@ namespace KP
                         currentGrabPoint = hit.GetComponent<GrabPoint>();
                         currentGrabPoint.BeginGrab(this);
                         currentHandState = HandState.Interacting;
-                        model.SetActive(false);
+                        //model.SetActive(false);
                     }
                 }
             }
-            else if (input.GripDown && currentHandState == HandState.Interacting)
+            else if (input.IsGrabUp && currentHandState == HandState.Interacting)
             {
                 currentGrabPoint.EndGrab(this);
                 currentHandState = HandState.Free;
                 currentGrabPoint = null;
                 m_handCollider.size = m_handColliderSize;
-                model.SetActive(true);
+                //model.SetActive(true);
             }
 
             SetInputs();

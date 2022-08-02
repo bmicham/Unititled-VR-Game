@@ -5,6 +5,7 @@ using UnityEngine;
 public class VRFirearm_ClosedBolt : VRFirearm
 {
     [Header("Closed Bolt Bools")]
+    public bool DoMore;
     public bool HasFireSelectorButton = true;
     public bool HasMagReleaseButton = true;
     public bool HasBoltReleaseButton = true;
@@ -60,19 +61,6 @@ public class VRFirearm_ClosedBolt : VRFirearm
         }
     }
 
-    public int FireSelectorModeIndex
-    {
-        get
-        {
-            return m_fireSelectorMode;
-        }
-    }
-
-    public bool HasExtractedRound()
-    {
-        return m_proxy.IsFull;
-    }
-
     private void Awake()
     {
         m_CamBurst = 1;
@@ -99,16 +87,11 @@ public class VRFirearm_ClosedBolt : VRFirearm
         Fire();
     }
 
-    public bool IsWeaponOnSafe()
-    {
-        return FireSelector_Modes.Length != 0 && FireSelector_Modes[m_fireSelectorMode].ModeType == FireSelectorModeType.Safe;
-    }
-
     protected virtual void ToggleFireSelector()
     {
         if (FireSelector_Modes.Length <= 1)
             return;
-        int num1 = UnityEngine.Random.Range(1, 3);
+        //int num1 = UnityEngine.Random.Range(1, 3);
         //m_Aud.PlayOneShot(selectorSwitch[num1]);
         /*
         if (bolt.UsesAKSafetyLock && !bolt.IsBoltForwardOfSafetyLock())
@@ -194,6 +177,16 @@ public class VRFirearm_ClosedBolt : VRFirearm
         m_timeSinceFiredShot += Time.deltaTime;
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (DoMore) 
+        {
+            _Jt.anchor = m_grabPointAnchor.localPosition;
+            ConfigurableJointExtensions.SetTargetRotationLocal(_Jt, _initialHandRotation * Quaternion.Euler(m_rotOffset.x, m_rotOffset.y, m_rotOffset.z), m_startRot);
+        }
+    }
+
     public override void LoadMagazine(VRFirearm_Magazine mag)
     {
         base.LoadMagazine(mag);
@@ -211,6 +204,7 @@ public class VRFirearm_ClosedBolt : VRFirearm
     private void UpdateInputAndAnimate(VRHand hand)
     {
         IsBoltCatchButtonHeld = false;
+        //TODO: Fix hastriggerupsincebegin not being set to false
         //m_triggerFloat = !m_hasTriggeredUpSinceBegin ? 0.0f : hand.input.TriggerFloat;
         m_triggerFloat = hand.input.TriggerFloat;
         if (!m_hasTriggerReset && m_triggerFloat <= TriggerResetThreshold)
@@ -230,7 +224,7 @@ public class VRFirearm_ClosedBolt : VRFirearm
                 if (HasBoltReleaseButton)
                     bolt.ReleaseBolt();
             }
-            else if (Vector2.Angle(touchpadAxes, Vector2.down) <= 45.0 && HasMagReleaseButton && bolt.CurPos >= VRClosedBolt.BoltPos.Locked && !m_proxy.IsFull)
+            else if (Vector2.Angle(touchpadAxes, Vector2.down) <= 45.0 && HasMagReleaseButton && !m_proxy.IsFull)
                 ReleaseMag();
         }
         if (hand.input.TouchpadPressed && touchpadAxes.magnitude > 0.200000002980232)
@@ -253,13 +247,11 @@ public class VRFirearm_ClosedBolt : VRFirearm
         float betweenLockAndFore = bolt.GetBoltLerpBetweenLockAndFore();
         if (Chamber.IsFull)
         {
-            Chamber.ProxyRound.position = Vector3.Lerp(RoundPos_Ejecting.position, Chamber.transform.position, betweenLockAndFore);
-            Chamber.ProxyRound.rotation = Quaternion.Slerp(RoundPos_Ejecting.rotation, Chamber.transform.rotation, betweenLockAndFore);
+            Chamber.ProxyRound.SetPositionAndRotation(Vector3.Lerp(RoundPos_Ejecting.position, Chamber.transform.position, betweenLockAndFore), Quaternion.Slerp(RoundPos_Ejecting.rotation, Chamber.transform.rotation, betweenLockAndFore));
         }
         if (!m_proxy.IsFull)
             return;
-        m_proxy.ProxyRound.position = Vector3.Lerp(RoundPos_MagazinePos.position, Chamber.transform.position, betweenLockAndFore);
-        m_proxy.ProxyRound.rotation = Quaternion.Slerp(RoundPos_MagazinePos.rotation, Chamber.transform.rotation, betweenLockAndFore);
+        m_proxy.ProxyRound.SetPositionAndRotation(Vector3.Lerp(RoundPos_MagazinePos.position, Chamber.transform.position, betweenLockAndFore), Quaternion.Slerp(RoundPos_MagazinePos.rotation, Chamber.transform.rotation, betweenLockAndFore));
     }
 
     public void ReleaseMag()

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8833254721163245904}
   - component: {fileID: 8204950434562597860}
   - component: {fileID: 8204950434562597867}
+  - component: {fileID: 1762243497}
   m_Layer: 0
   m_Name: RND_556
   m_TagString: Untagged
@@ -136,8 +137,8 @@ MonoBehaviour:
   IsMagazineLoadable: 0
   IsCaseless: 0
   IsManuallyChamberable: 0
-  defaultRender: {fileID: 2353497935795004725}
-  casingRender: {fileID: 8332358700738532409, guid: 644a99323f54bde429737367ea75aa40, type: 3}
+  defaultRender: {fileID: -7511558181221131132, guid: bb7bb0090af43154397e3bd4ed8958f5, type: 3}
+  casingRender: {fileID: -7511558181221131132, guid: 5538bbcdc266b01489067a4b8fbb24c0, type: 3}
   currentChamber: {fileID: 0}
   chamberBeingHoveredOver: {fileID: 0}
   currentRound: {fileID: 0}
@@ -157,6 +158,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1762243497
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204950434562597866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.005
+  m_Height: 0.056079842
+  m_Direction: 0
+  m_Center: {x: 0.00000074133277, y: 0, z: -3.386901e-13}
 --- !u!1 &8560970098227034894
 GameObject:
   m_ObjectHideFlags: 0

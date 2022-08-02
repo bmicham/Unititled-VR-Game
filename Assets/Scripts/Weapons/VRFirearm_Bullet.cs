@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using KP;
 using UnityEngine;
 
 public class VRFirearm_Bullet : MonoBehaviour
@@ -53,6 +54,7 @@ public class VRFirearm_Bullet : MonoBehaviour
                     transform.position = rayHit.point;
                 IsTraveling = false;
 
+                /*
                 if (rayHit.transform.CompareTag("Penetrable"))
                 {
                     Vector3 secondPosition = rayHit.point - rayHit.normal * (1f / 1000);
@@ -64,24 +66,29 @@ public class VRFirearm_Bullet : MonoBehaviour
                         if (!float.IsNaN(exitHit.point.x))
                             transform.position = exitHit.point;
                         IsTraveling = false;
-                        /*
                         if (hitDecal != null)
                             Instantiate(hitDecal, exitHit.point, Quaternion.identity);
                         if (impactVisusal != null)
                             Instantiate(impactVisusal, exitHit.point, Quaternion.LookRotation(exitHit.normal));
                         if (impactSound != null)
                             Instantiate(impactSound, exitHit.point, Quaternion.identity);
-                        */
                         if (exitHit.collider.attachedRigidbody != null)
                             exitHit.collider.attachedRigidbody.AddForceAtPosition(transform.forward * muzzleVelocity * 1f, exitHit.point);
                     }
                 }
-                /*
+                
                 if (impactVisusal != null)
                     Instantiate(impactVisusal, rayHit.point, Quaternion.LookRotation(rayHit.normal));
                 if (impactSound != null)
                     Instantiate(impactSound, rayHit.point, Quaternion.identity);
                 */
+
+                if (rayHit.collider.gameObject.GetComponent<RPMTest>()) 
+                {
+                    var comp = rayHit.collider.gameObject.GetComponent<RPMTest>();
+                    comp.Damage();
+                }
+
                 else if (rayHit.collider.attachedRigidbody != null)
                     rayHit.collider.attachedRigidbody.AddForceAtPosition(transform.forward * muzzleVelocity * 1f, rayHit.point);
             }

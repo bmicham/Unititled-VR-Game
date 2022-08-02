@@ -11,8 +11,6 @@ public class VRClosedBolt : MonoBehaviour
     public VRFirearm_ClosedBolt parentFirearm;
     public float Speed_Forward;
     public float Speed_Rearward;
-    public float _BoltSpeed = 5f;
-    public float _BoltForce = 5f;
     public float SpeedHeld = 1f;
     public BoltPos CurPos;
     public BoltPos LastPos;
