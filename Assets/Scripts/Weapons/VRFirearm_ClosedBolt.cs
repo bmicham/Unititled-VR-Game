@@ -151,7 +151,7 @@ public class VRFirearm_ClosedBolt : VRFirearm
         Fire(Chamber, muzzlePosition);
         Debug.Log("<color=green> Event: </color> WEAPON FIRED!");
         //FireMuzzleEffects();
-        //Recoil(IsHedlWithTwoHands());
+        Recoil(true);
         //audSource.PlayOneShot(gunShot);
         bolt.ImpartFiringImpulse();
         return true;

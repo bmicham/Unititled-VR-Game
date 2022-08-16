@@ -10,7 +10,6 @@ public class RPMTest : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
             ShotTimes.Clear();
-        Debug.Log(("ROF: " + RPM));
     }
 
     public void Damage()

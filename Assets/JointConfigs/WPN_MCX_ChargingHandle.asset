@@ -26,8 +26,8 @@ MonoBehaviour:
   AngularYMotion: 2
   AngularZMotion: 2
   m_PositionSpring: 10000
-  m_PositionDamper: 5000
-  m_PositionMaximumForce: 1000
+  m_PositionDamper: 1000
+  m_PositionMaximumForce: 5000
   rotationDriveMode: 1
   m_AngularSpring: 0
   m_AngularDamper: 0

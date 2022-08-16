@@ -11,6 +11,10 @@ public class VRFirearm : GrabPoint
     public Transform MagazineLoadedPosition;
     public Transform magazineEjectPosition;
     public Transform muzzlePosition;
+    [Header("Recoil Settings")]
+    public float _recoilForceX;
+    public float _recoilForceY;
+    public float _recoilForceZ;
 
     private float m_ejectDelay;
     private VRFirearm_Magazine m_lastEjectedMag;
@@ -28,9 +32,11 @@ public class VRFirearm : GrabPoint
         return MagazineLoadedPosition;
     }
 
-    public Transform GetMagEjectPos()
+    protected virtual void Recoil(bool isHeldwithTwoHands)
     {
-        return magazineEjectPosition;
+        _RB.AddForceAtPosition(muzzlePosition.up * _recoilForceY, muzzlePosition.position, ForceMode.Impulse);
+        _RB.AddForceAtPosition(muzzlePosition.forward * -_recoilForceZ, muzzlePosition.position, ForceMode.Impulse);
+        //_RB.AddForceAtPosition(muzzlePosition.right * _recoilForceX, muzzlePosition.position, ForceMode.Impulse);
     }
 
     public virtual void Fire(VRFirearm_Chamber chamber, Transform muzzle)

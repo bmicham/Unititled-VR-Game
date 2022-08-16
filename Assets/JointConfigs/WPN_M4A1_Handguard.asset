@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a63f5ec710602347914705fa43e6171, type: 3}
-  m_Name: WPN_M4A1_ChargingHandle
+  m_Name: WPN_M4A1_Handguard
   m_EditorClassIdentifier: 
-  jointType: 2
+  jointType: 1
   m_jointPrimaryAxis: {x: 1, y: 0, z: 0}
   m_jointSecondaryAxis: {x: 0, y: 1, z: 0}
-  _LinearLimit: 0.1
-  SetXMotion: 0
-  SetYMotion: 0
+  _LinearLimit: 0
+  SetXMotion: 1
+  SetYMotion: 1
   SetZMotion: 1
-  xMotion: 2
-  yMotion: 2
-  zMotion: 1
+  xMotion: 0
+  yMotion: 0
+  zMotion: 0
   AngularXMotion: 2
   AngularYMotion: 2
   AngularZMotion: 2
@@ -29,9 +29,9 @@ MonoBehaviour:
   m_PositionDamper: 1000
   m_PositionMaximumForce: 5000
   rotationDriveMode: 1
-  m_AngularSpring: 0
-  m_AngularDamper: 0
-  m_AngularMaximumForce: 0
+  m_AngularSpring: 10000
+  m_AngularDamper: 1000
+  m_AngularMaximumForce: 5000
   autoConfigureConnectedAnchor: 0
   enableCollision: 0
   enablePreprocessing: 0
